@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101d3a" />
+  <title>SmartCampus | Campus Issue Reporting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">SC</span><span>Smart<span>Campus</span><small>STUDENT VOICE • BETTER CAMPUS</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="overview"><span>▦</span> Overview</button>
+      <button class="nav-item" data-view="report"><span>＋</span> Report an issue</button>
+      <button class="nav-item" data-view="reports"><span>▤</span> My reports <b id="sideCount">0</b></button>
+      <div class="side-card"><div class="side-icon">✦</div><strong>Your voice matters.</strong><p>Help make campus safer, cleaner and better for everyone.</p></div>
+      <div class="sidebar-bottom"><span class="online-dot"></span> Local demo workspace <small>SmartCampus v1.0</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">CAMPUS COMMUNITY</div><h1 id="pageTitle">Good day, student <span>✦</span></h1><p id="pageSubtitle">See what is happening and help improve your campus.</p></div>
+        <div class="top-actions"><span class="campus-pill">● Campus reporting</span><button class="avatar" title="Student profile">ST</button></div>
+      </header>
+
+      <section class="view active" id="overviewView">
+        <div class="hero">
+          <div class="hero-content"><span class="hero-tag">A BETTER CAMPUS STARTS HERE</span><h2>See a problem?<br><em>Speak up. Make change.</em></h2><p>Report broken facilities, unsafe areas or environmental challenges. Add photos or videos so the right people can understand the issue.</p><button class="btn btn-light" data-go="report">＋ Submit a report <span>→</span></button></div>
+          <div class="hero-art"><div class="art-circle circle-one"></div><div class="art-circle circle-two"></div><div class="campus-building"><div class="roof"></div><div class="building-body"><div class="columns"><i></i><i></i><i></i><i></i></div><div class="door"></div></div><div class="steps"></div></div><div class="art-badge">🏫 <span>Campus<br>care</span></div></div>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">YOUR ACTIVITY</div><h3>Reporting snapshot</h3></div><button class="text-button" data-go="reports">View all reports →</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total reports</span><span class="stat-icon blue">▤</span></div><strong id="totalStat">0</strong><small>Issues you have submitted</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Under review</span><span class="stat-icon amber">◷</span></div><strong id="reviewStat">0</strong><small>Waiting for attention</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Resolved</span><span class="stat-icon green">✓</span></div><strong id="resolvedStat">0</strong><small>Marked as fixed</small></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel"><div class="panel-heading"><div><h3>Recent reports</h3><p>Your latest campus concerns</p></div><span class="live-label"><i></i> LIVE ON THIS DEVICE</span></div><div id="recentReports" class="report-list"></div></section>
+          <section class="panel tips-panel"><div class="tips-emoji">📸</div><h3>Make your report count</h3><p>Clear details help campus teams understand and respond to problems faster.</p><ul><li>Choose the correct location.</li><li>Describe what happened and when.</li><li>Add a clear photo or short video.</li><li>Never put yourself in danger to capture evidence.</li></ul><button class="btn btn-primary full" data-go="report">Report an issue <span>→</span></button></section>
+        </div>
+      </section>
+
+      <section class="view" id="reportView">
+        <div class="back-row"><button class="text-button" data-go="overview">← Back to overview</button></div>
+        <div class="form-layout">
+          <div class="form-main panel">
+            <div class="eyebrow">CAMPUS ISSUE FORM</div><h2>Tell us what needs attention.</h2><p class="muted">Share enough detail for the campus team to locate and understand the problem.</p>
+            <form id="reportForm">
+              <div class="field"><label for="title">Issue title <span>*</span></label><input id="title" required maxlength="90" placeholder="e.g. Broken water pipe near Block B"></div>
+              <div class="field-row">
+                <div class="field"><label for="category">Issue category <span>*</span></label><select id="category" required><option value="">Choose category</option><option>Buildings & classrooms</option><option>Hostels & accommodation</option><option>Water & sanitation</option><option>Electricity & lighting</option><option>Roads & walkways</option><option>Environment & cleanliness</option><option>Safety & security</option><option>Internet & technology</option><option>Other</option></select></div>
+                <div class="field"><label for="priority">Urgency <span>*</span></label><select id="priority" required><option value="Normal">Normal</option><option value="High">High</option><option value="Critical">Critical / immediate danger</option></select></div>
+              </div>
+              <div class="field-row">
+                <div class="field"><label for="location">Campus location <span>*</span></label><input id="location" required placeholder="e.g. Hostel A, second floor"></div>
+                <div class="field"><label for="date">When did you notice it?</label><input id="date" type="date"></div>
+              </div>
+              <div class="field"><label for="description">Describe the problem <span>*</span></label><textarea id="description" required rows="5" maxlength="1500" placeholder="Explain what is wrong, how it affects students and any useful directions..."></textarea><small class="field-hint">Do not include passwords or sensitive personal information.</small></div>
+              <div class="field"><label>Evidence (photo or video)</label><label class="upload-box" for="media"><span class="upload-icon">⇧</span><strong>Click to upload or choose files</strong><small>Images or videos • Maximum 25 MB per file</small><input id="media" type="file" accept="image/*,video/*" multiple hidden></label><div id="mediaPreview" class="media-preview"></div></div>
+              <div class="field-row">
+                <div class="field"><label for="reporter">Your name (optional)</label><input id="reporter" maxlength="60" placeholder="Student name"></div>
+                <div class="field"><label for="contact">Contact (optional)</label><input id="contact" maxlength="40" placeholder="Phone or email"></div>
+              </div>
+              <label class="check-row"><input type="checkbox" id="anonymous"> Submit this report anonymously</label>
+              <div class="form-actions"><button type="button" class="btn btn-outline" data-go="overview">Cancel</button><button class="btn btn-primary" type="submit">Submit report <span>→</span></button></div>
+            </form>
+          </div>
+          <aside class="panel privacy-card"><div class="privacy-icon">🔒</div><h3>Report responsibly</h3><p>Your report is saved in this browser in this demo version. WhatsApp sharing is available after submission.</p><div class="privacy-divider"></div><strong>What happens next?</strong><ol><li><b>01</b><span>Your report is recorded on this device.</span></li><li><b>02</b><span>You can share the report summary through WhatsApp.</span></li><li><b>03</b><span>A campus administrator can review it once a real backend is connected.</span></li></ol><div class="notice">⚠️ For emergencies or immediate danger, contact campus security or the appropriate emergency service directly.</div></aside>
+        </div>
+      </section>
+
+      <section class="view" id="reportsView">
+        <div class="section-heading"><div><div class="eyebrow">REPORT HISTORY</div><h2>Your reports</h2><p class="muted">Track the issues you have recorded on this device.</p></div><button class="btn btn-primary" data-go="report">＋ New report</button></div>
+        <div class="filter-bar"><input id="searchReports" placeholder="⌕  Search reports..."><select id="filterStatus"><option value="All">All statuses</option><option>Submitted</option><option>Under review</option><option>Resolved</option></select><select id="filterCategory"><option value="All">All categories</option><option>Buildings & classrooms</option><option>Hostels & accommodation</option><option>Water & sanitation</option><option>Electricity & lighting</option><option>Roads & walkways</option><option>Environment & cleanliness</option><option>Safety & security</option><option>Internet & technology</option><option>Other</option></select></div>
+        <div id="allReports" class="all-reports"></div>
+      </section>
+
+      <footer><span>© 2026 SmartCampus</span><span>Built for safer, cleaner and smarter campuses.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="detailModal" class="modal-backdrop"><div class="modal panel"><button class="modal-close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
