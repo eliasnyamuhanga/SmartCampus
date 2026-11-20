@@ -2,7 +2,7 @@
 const STORAGE_KEY = "smartcampus_reports_v1";
 // Replace with your campus office WhatsApp number, including country code, without + or spaces.
 // Example Tanzania format: 2557XXXXXXXX
-const WHATSAPP_NUMBER = "255792684054";
+const WHATSAPP_NUMBER = "255760684043";
 let selectedFiles = [];
 let reports = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 const $ = (id) => document.getElementById(id);
